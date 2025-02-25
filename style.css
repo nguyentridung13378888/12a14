@@ -1,0 +1,123 @@
+
+body{
+  padding: 0%;
+  background-color: #bbc5a9;
+  font-family: 'Times New Roman', Times, sans-serif;
+  height: 150vh;
+  background-repeat: no-repeat;
+
+}
+.anhMinhHoa{
+  height: 300px;
+  width: 400px;
+  border-radius: 10px;
+  transition-duration: 100ms;
+}
+.anhMinhHoa:hover{
+  height: 350px;
+  width: 450px;
+  transition-duration: 100ms;
+}
+div.containerGrid{
+  display: grid;
+  gap: 40px;
+  padding: 50px;
+  grid-template-columns: auto auto;
+}
+div.containerGrid p{
+  font-family: roboto;
+  font-size: 32px;
+}
+div.container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,300px);
+  gap: 30px;
+  justify-content: center;
+ 
+}
+div.section{
+  text-align: center;
+  text-wrap: 10px;
+  background-color: #F4E2E0;
+  color: #FF885B;
+  height: fit-content;
+  width: 290px;
+  padding: 5px 10px 20px 10px;
+  border-radius: 50px;
+  font-family:'Roboto'; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition-duration: 200ms;
+}
+div.section:hover{
+ font-size: 30px;
+ transition-duration: 200ms;
+ background-color: antiquewhite;
+}
+img.clb{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+h3{
+  font-size: 20px;
+}
+img.logoPage{
+  height: 100px;
+  width: 100px;
+  margin: 1% 1% 1% 2%;
+  border-radius: 50%;
+  
+  
+}
+div.header{
+  background-image:url(img/banner.jpg) ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-left: 0px;
+  height: auto;
+  border-radius: 10px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+a.button{
+  background-color:#eadf96;
+  color: rgb(47, 36, 14);
+  text-decoration: none;
+  font-size: 22px;
+  padding: 5px;
+  height: auto;
+  border-radius: 15%;
+  margin: 10px;
+  
+}
+a{
+  text-decoration: none;
+  color:#FF885B ;
+}
+a:visited{
+  text-decoration: none;
+}
+
+div#tieuDe{
+  color: rgb(5, 45, 33);
+  text-align: center;
+  font-size: 50px;
+}
+footer{
+  height: 30px;
+  width: 100%;
+  background-color: aliceblue;
+  text-align: center;
+}
+.backgroundImage{
+  background-image: url(img/nen.png);background-size: cover;
+  height: 100%;
+  width: 100%;
+  display:block;
+  border-radius: 30px 20px 10px;
+
+}
