@@ -24,7 +24,12 @@
         cursor: context-menu;
       }
 
-      
+      .button-container{
+        display: flex;
+        justify-content:space-around;
+        width: fit-content;
+        gap:10px
+      }
 
       button.KBB{
         color: #ffffff;
@@ -56,31 +61,50 @@
       <a class="button" href="clubPreviewPage.html">Các lạc bộ</a>
       <a class="button" href="Calculator.html">Máy tính</a>
   </div>
+
   <div class="containerKBB">
     <h1>Kéo Búa Bao!</h1>
-     <div>
+
+    <div class="button-container">
+      
       <button class="KBB"
-      onclick="playGame('KÉO');showResult()"
+      onclick="playGame('KÉO');updateScore()"
       >kéo</button>
       <button class="KBB"
-      onclick="playGame('BÚA')">búa</button>
+      onclick="playGame('BÚA');updateScore()">búa</button>
       <button class="KBB"
-      onclick="playGame('BAO')">bao</button>
-      <button class="KBB" onclick="resetResult()">Reset kết quả</button>
+      onclick="playGame('BAO');updateScore()">bao</button>
+      <button class="KBB" onclick="
+      score.Thua = 0;
+      score.Thắng = 0;
+      score.Hòa = 0;
+      localStorage.removeItem('score')
+      ;updateScore()"
+      >Reset kết quả</button>
     </div>
-    <div>
+
+    <div id="ketQua">
       <h1>
         Kết quả: thắng <span id="win">0</span>, Thua <span id="lose">0</span>, Hòa <span id="draw">0</span>
       </h1>
     </div>
+    
   </div>
   </body>
   <script>
-    const winlosedraw_Counter = {
-        Thắng:0,
-        Thua:0,
-        Hòa:0
-      }
+     
+    const score =JSON.parse(localStorage.getItem('score'))
+    updateScore()
+
+      if(!score){
+        score ={
+      Thắng: 0,
+      Thua: 0,
+      Hòa: 0,
+    }}
+
+
+    console.log(localStorage.getItem('score'))
 
     function playGame(yourPick){
 
@@ -121,34 +145,18 @@ else if (yourPick === 'KÉO'){
       }
 /*thêm điểm*/
       if(result === 'Thắng'){
-        winlosedraw_Counter.Thắng += 1;
+        score.Thắng += 1;
       } else if (result === 'Thua'){
-        winlosedraw_Counter.Thua += 1
+        score.Thua += 1
       }
       else{
-        winlosedraw_Counter.Hòa +=1
+        score.Hòa +=1
       }
+
 /*chạy arlert*/
-    alert(`Bạn ra ${yourPick}. Máy ra ${computerPick}. Kết quả ${result}. Tổng: Thắng ${winlosedraw_Counter.Thắng},Thua ${winlosedraw_Counter.Thua},Hòa ${winlosedraw_Counter.Hòa}`)
-   
-    document.getElementById("win").innerHTML = winlosedraw_Counter.Thắng
+    alert(`Bạn ra ${yourPick}. Máy ra ${computerPick}. Kết quả ${result}. Tổng: Thắng ${score.Thắng},Thua ${score.Thua},Hòa ${score.Hòa}`);
     
-    document.getElementById("draw").innerHTML = winlosedraw_Counter.Hòa
-    
-    document.getElementById("lose").innerHTML = winlosedraw_Counter.Thua
-    }
-  
-    function resetResult(){
-    winlosedraw_Counter.Thua = 0;
-    winlosedraw_Counter.Thắng = 0;
-    winlosedraw_Counter.Hòa = 0;
-    document.getElementById("win").innerHTML = winlosedraw_Counter.Thắng;
-    
-    document.getElementById("draw").innerHTML = winlosedraw_Counter.Hòa;
-    
-    document.getElementById("lose").innerHTML = winlosedraw_Counter.Thua
-    }
-      
+// chọn nước đi cho máy
     function pickComputerMove(){
         const randomNumber = Math.random()
         let computerPick = '';
@@ -162,7 +170,15 @@ else if (yourPick === 'KÉO'){
           computerPick = 'Bao'
         }
         return computerPick
-    }
+    }}
+    // updateScore
+    function updateScore(){
+      document.getElementById('win').innerHTML = score.Thắng;
+      document.getElementById('lose').innerHTML = score.Thua;
+      document.getElementById('draw').innerHTML = score.Hòa;
+      /*lưu trữ*/
+    localStorage.setItem('score', JSON.stringify(score));
+        }
       
   </script>
 </html>
